@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorry na madam jii maan jayen......</title>
     <link rel="stylesheet" href="styles.css">
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -16,12 +29,33 @@
         <a href="https://www.instagram.com/_yesismail_/" target="_blank" class="insta-btn">
     Reply???
 </a>
-<!-- MP3 Audio Player for GitHub Pages -->
-<audio controls>
-    <source src="./song.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
 
+    <!-- Audio Element -->
+    <audio id="myAudio" src="song.mp3" preload="auto"></audio>
+
+    <!-- Controls -->
+    <div>
+        <button onclick="playAudio()">Play</button>
+        <button onclick="pauseAudio()">Pause</button>
+        <button onclick="toggleLoop()">Toggle Loop</button>
+    </div>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+
+        function playAudio() {
+            audio.play().catch(err => console.log("Autoplay blocked by browser."));
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        function toggleLoop() {
+            audio.loop = !audio.loop;
+            alert('Loop is now ' + (audio.loop ? 'ON' : 'OFF'));
+        }
+    </script>
 
 
         <div class="gif_container">
