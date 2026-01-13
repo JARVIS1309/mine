@@ -32,19 +32,8 @@
 </a></div>
         <div>
 
-    <!-- Audio Element -->
-  <audio id="myAudio" src="https://JARVIS1309.github.io/mine/song.mp3" preload="auto" controls></audio>
-
-
-    <!-- Controls -->
-    <div>
-        <button onclick="playAudio()">Play</button>
-        <button onclick="pauseAudio()">Pause</button>
-        <button onclick="toggleLoop()">Toggle Loop</button>
-    </div>
-       <div> </div>
-
-<!-- Fixed Play/Pause Button at Top -->
+ 
+<!-- Play/Pause Button at Top -->
 <button id="playPauseBtn" style="
     position: fixed;
     top: 10px;
@@ -54,30 +43,29 @@
     font-size: 18px;
     cursor: pointer;
     z-index: 1000;
-">Pause</button>
+">Play Song</button>
 
-<audio id="myAudio" src="https://JARVIS1309.github.io/mine/song.mp3" autoplay preload="auto"></audio>
+<audio id="myAudio" src="https://JARVIS1309.github.io/mine/song.mp3" preload="auto"></audio>
 
 <script>
   const audio = document.getElementById('myAudio');
   const btn = document.getElementById('playPauseBtn');
 
-  // Toggle Play/Pause on button click
+  // Start audio on first click (works with browser autoplay restrictions)
   btn.addEventListener('click', () => {
     if(audio.paused) {
-      audio.play();
-      btn.textContent = 'Pause';
+      audio.play().then(() => {
+        btn.textContent = 'Pause';
+      }).catch(err => {
+        console.log("Autoplay blocked, waiting for user interaction.");
+      });
     } else {
       audio.pause();
-      btn.textContent = 'Play';
+      btn.textContent = 'Play Song';
     }
   });
-
-  // Set initial button text
-  window.onload = () => {
-    btn.textContent = audio.paused ? 'Play' : 'Pause';
-  };
 </script>
+
 
 
 
