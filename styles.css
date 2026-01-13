@@ -12,21 +12,17 @@ body {
   .container {
     text-align: center;
   }
-  .insta-btn {
+.insta-btn {
     display: inline-block;
     margin-top: 15px;
-    padding: 6px 12px;
+    padding: 8px 14px;
     font-size: 14px;
     text-decoration: none;
     color: white;
-    background: #E1306C;
+    background-color: #E1306C;
     border-radius: 6px;
-    font-family: Arial, sans-serif;
 }
 
-.insta-btn:hover {
-    opacity: 0.85;
-}
 
   h1 {
     font-size: 2.5em;
