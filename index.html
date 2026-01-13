@@ -44,22 +44,41 @@
     </div>
        <div> </div>
 
-    <script>
-        const audio = document.getElementById('myAudio');
+<!-- Fixed Play/Pause Button at Top -->
+<button id="playPauseBtn" style="
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1000;
+">Pause</button>
 
-        function playAudio() {
-            audio.play().catch(err => console.log("Autoplay blocked by browser."));
-        }
+<audio id="myAudio" src="https://JARVIS1309.github.io/mine/song.mp3" autoplay preload="auto"></audio>
 
-        function pauseAudio() {
-            audio.pause();
-        }
+<script>
+  const audio = document.getElementById('myAudio');
+  const btn = document.getElementById('playPauseBtn');
 
-        function toggleLoop() {
-            audio.loop = !audio.loop;
-            alert('Loop is now ' + (audio.loop ? 'ON' : 'OFF'));
-        }
-    </script>
+  // Toggle Play/Pause on button click
+  btn.addEventListener('click', () => {
+    if(audio.paused) {
+      audio.play();
+      btn.textContent = 'Pause';
+    } else {
+      audio.pause();
+      btn.textContent = 'Play';
+    }
+  });
+
+  // Set initial button text
+  window.onload = () => {
+    btn.textContent = audio.paused ? 'Play' : 'Pause';
+  };
+</script>
+
 
 
         <div class="gif_container">
